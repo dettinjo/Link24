@@ -1,0 +1,69 @@
+image: node:18
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /-draft$/
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:         
+  - setup
+  - build 
+  - test
+
+setup-backend:
+  stage: setup
+  script:
+    - cd backend
+    - npm ci
+  artifacts:
+    expire_in: 1h
+    paths:
+      - backend/node_modules
+  only: 
+    changes: 
+      - .gitignore
+      - .gitlab-ci.yml
+      - backend/**/*
+
+test-backend:
+  stage: test
+  script: 
+    - cd backend
+    - npm run test:ci
+  only: 
+    changes: 
+      - .gitignore
+      - .gitlab-ci.yml
+      - backend/**/*
+
+setup-frontend:
+  stage: setup
+  script:
+    - cd frontend
+    - npm ci
+  artifacts:
+    expire_in: 1h
+    paths:
+      - frontend/node_modules
+  only: 
+    changes: 
+      - .gitignore
+      - .gitlab-ci.yml
+      - frontend/**/*
+      
+build-frontend:
+  stage: build
+  script:
+    - cd frontend
+    - npm run build
+  artifacts:
+    expire_in: 1h
+    paths:
+      - frontend/node_modules
+  only: 
+    changes: 
+      - .gitignore
+      - .gitlab-ci.yml
+      - frontend/**/*

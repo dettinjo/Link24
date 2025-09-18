@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "7d7a7c6c-75bc-4b4b-a20b-36b45f6257d9",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14781802"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"mwa@hdm-stuttgart.de\",\n    \"password\":\"Mwa123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signup"
+					]
+				},
+				"description": "# Create User\n\nThis Route creates a User with a email and password provided.\n\n## Route:\n\n[http://localhost:8080/auth/signup](http://localhost:8080/auth/login)\n\n## Request Type:\n\n**POST**\n\n## **Content-Type:**\n\n**application/json**\n\n## Request Attributes:\n\n### Body:\n\n| **Name** | **Type** |\n| --- | --- |\n| \"email\" | String! |\n| \"password\" | String! |\n\n### Header:\n\n| **Name** | **Type** |\n| --- | --- |\n| \\- | \\- |\n\n## Response:\n\n### Attributes:\n\n| **Name** | **Type** |\n| --- | --- |\n| \\- | \\- |\n\n### Status Code:\n\n| **Code** | **Description** | **Reason** |\n| --- | --- | --- |\n| 201 | Created | Successfully Created |\n| 409 | Conflict | Email already exists |"
+			},
+			"response": [
+				{
+					"name": "Create User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mwa@hdm-stuttgart.de\",\n    \"password\":\"Mwa123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "7"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7-rM9AyJuqT6iOan/xHh+AW+7K/T8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 19 May 2022 14:43:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "Created"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"mwa@hdm-stuttgart.de\",\n    \"password\":\"Mwa123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "# Login Route\n\n## Route:\n\n[**http://localhost:8080/auth/login**](http://localhost:8080/auth/login)\n\n## Request Type:\n\n**POST**\n\n## **Content-Type:**\n\n**application/json**\n\n## Request Attributes:\n\n### Body:\n\n\"email\": String!\n\n\"password\": String!\n\n## Response Attributes:\n\n\"token\": String!"
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"mwa@hdm-stuttgart.de\",\n    \"password\":\"Mwa123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "188"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bc-cPdWY1vim3fKnH7gsUR5DUFAwFg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 19 May 2022 14:46:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mjg2NTdhM2I2NjI3MzY1MjI3ODRkMWIiLCJpYXQiOjE2NTI5NzE1NzUsImV4cCI6MTY1MzA1Nzk3NX0.ynExloWT2GSWXc0iMPW7xaBXU5kNZSpdcr6Vd0jaa0E\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Check Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/auth/check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmIzMThiOWZmYmNkYzI0OGU2MTE0YTUiLCJpYXQiOjE2NTU5MDQ0NDMsImV4cCI6MTY1NTk5MDg0M30.TolWYYRH2KaOVHWO0FEDEbjfdmfkHKMJ5WPe8sjH3ok",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
