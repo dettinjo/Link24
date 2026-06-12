@@ -1,3 +1,5 @@
+<!-- portfolio:date=2022-06-01 -->
+
 [English](README.md) · [Deutsch](README.de.md)
 
 # Link24 — Full-Stack URL Shortener
@@ -6,9 +8,11 @@ A comprehensive full-stack URL shortening service designed for both anonymous an
 
 ## Screenshots
 
-![Home](docs/home.webp)
-![History](docs/history.webp)
-![Signup](docs/signup.webp)
+<p align="center">
+  <img src="docs/home.webp" width="48%" />
+  <img src="docs/history.webp" width="48%" />
+  <img src="docs/signup.webp" width="48%" />
+</p>
 
 ### Key Features
 
