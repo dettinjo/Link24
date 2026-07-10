@@ -4,7 +4,7 @@
 
 # Link24 — Full-Stack URL Shortener
 
-A comprehensive full-stack URL shortening service designed for both anonymous and registered users. While anonymous users can quickly generate temporary short links, registered users unlock a personal dashboard with link history, custom slugs, expiration date control, and click tracking. The project is architected as a decoupled system: a Next.js frontend, a Node.js/Express REST API, and a MongoDB database, all containerised with Docker.
+A full-stack URL shortener with a Node.js API and Next.js frontend, featuring secure user authentication, custom link management, and a complete Docker CI/CD pipeline.
 
 ## Screenshots
 
