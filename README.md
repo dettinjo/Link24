@@ -1,32 +1,43 @@
 <!-- portfolio:date=2022-06-01 -->
-
-[English](README.md) · [Deutsch](README.de.md)
-
 # Link24 — Full-Stack URL Shortener
 
-A full-stack URL shortener with a Node.js API and Next.js frontend, featuring secure user authentication, custom link management, and a complete Docker CI/CD pipeline.
+**[English](README.md) · [Deutsch](README.de.md)**
+
+<p align="center"><img src="docs/home.webp" alt="Link24 URL shortener home page" width="100%" /></p>
+
+A full-stack URL shortener pairing a Node.js/Express REST API and MongoDB TTL storage with a React/Next.js frontend, JWT authentication, and a containerized GitLab CI/CD pipeline.
+
+## Highlights
+
+- **REST API & MongoDB TTL expiration** — `Node.js` and `Express.js` service layer managing short-link CRUD, click counters, and automatic link expiry via Mongoose TTL indexes on `expiresAt`.
+- **React / Next.js UI & JWT auth** — anonymous short-link generation alongside authenticated user dashboards (`JWT` + `bcrypt`), custom slugs, and `Tailwind CSS` styling.
+- **End-to-end & API test automation** — combines Jest/Supertest backend tests with Cypress end-to-end browser tests orchestrated in GitLab CI/CD and Docker Compose.
 
 ## Screenshots
 
 <p align="center">
-  <img src="docs/home.webp" width="48%" />
-  <img src="docs/history.webp" width="48%" />
-  <img src="docs/signup.webp" width="48%" />
+  <img src="docs/history.webp" alt="Authenticated link history and click analytics dashboard" width="49%" />
+  <img src="docs/signup.webp" alt="User registration and JWT login screen" width="49%" />
 </p>
 
-### Key Features
+## Architecture
 
-- **User Authentication:** Secure registration and login with JWT and bcrypt password hashing.
-- **Public Link Shortening:** Anonymous users can create short links with a random slug and a 30-day default expiration.
-- **Authenticated Dashboard:** Full history of all created links for logged-in users.
-- **Custom Slugs & Expiration:** Users define human-readable slugs and custom expiration periods.
-- **CRUD Operations:** Full create, read, update, and delete for personal links.
-- **Click Tracking:** Counts and displays click statistics per short link.
+```
+Next.js + React Frontend (Tailwind CSS · Cypress E2E)
+         │  REST / JSON + Bearer JWT
+         ▼
+Node.js / Express.js API (Jest + Supertest · bcrypt · JWT)
+         │  Mongoose ODM
+         ▼
+MongoDB (short URL documents, click counters, TTL expiresAt index)
+```
 
-### Technical Highlights
+## Tech Stack
 
-The backend is a RESTful API built with Node.js and Express.js, following a service-oriented architecture. Mongoose manages MongoDB data models; MongoDB's TTL index on `expiresAt` automates expired link deletion. The frontend is Next.js with Tailwind CSS and Cypress end-to-end tests. A GitLab CI pipeline runs backend (Jest/Supertest) and frontend tests on every push. The full stack is orchestrated with Docker Compose.
+React · Next.js · Tailwind CSS · Node.js · Express.js · MongoDB · JWT · Docker · Cypress · GitLab CI/CD
 
-### Outcome
+## Getting Started
 
-A fully self-contained project demonstrating modern full-stack and DevOps practices — secure REST API design, containerised multi-service orchestration, and automated CI/CD. The most valuable takeaway was implementing the complete pipeline from code commit to verified build entirely through Docker and GitLab CI.
+```bash
+docker compose up --build   # Starts MongoDB, Express API, and Next.js frontend
+```

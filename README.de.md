@@ -1,32 +1,43 @@
 <!-- portfolio:date=2022-06-01 -->
-
-[Deutsch](README.de.md) · [English](README.md)
-
 # Link24 — Full-Stack URL-Shortener
 
-Ein Full-Stack-URL-Kürzungsdienst mit Node.js-API und Next.js-Frontend — mit sicherer Authentifizierung, individuellem Link-Management und vollständiger Docker-CI/CD-Pipeline.
+**[English](README.md) · [Deutsch](README.de.md)**
+
+<p align="center"><img src="docs/home.webp" alt="Link24 URL-Shortener Startseite" width="100%" /></p>
+
+Ein Full-Stack-URL-Shortener mit Node.js-/Express-REST-API, MongoDB-TTL-Ablauflogik, React-/Next.js-Frontend, JWT-Authentifizierung und automatisierter GitLab-CI/CD-Pipeline.
+
+## Highlights
+
+- **REST-API & automatischer MongoDB-Ablauf** — `Node.js`- und `Express.js`-Backend für Short-Link-CRUD, Klick-Zähler und automatisches Löschen abgelaufener Links über Mongoose-TTL-Indizes auf `expiresAt`.
+- **React-/Next.js-UI & JWT-Authentifizierung** — anonyme Kurzlinks sowie geschütztes Nutzer-Dashboard (`JWT` + `bcrypt`), benutzerdefinierte Slugs und `Tailwind CSS`-Styling.
+- **End-to-End- & API-Testautomatisierung** — vereint Jest/Supertest-Backend-Tests mit Cypress-End-to-End-Tests in GitLab CI/CD und Docker Compose.
 
 ## Screenshots
 
 <p align="center">
-  <img src="docs/home.webp" width="48%" />
-  <img src="docs/history.webp" width="48%" />
-  <img src="docs/signup.webp" width="48%" />
+  <img src="docs/history.webp" alt="Link-Historie und Klickstatistiken im angemeldeten Dashboard" width="49%" />
+  <img src="docs/signup.webp" alt="Registrierung und JWT-Anmeldung" width="49%" />
 </p>
 
-### Hauptfunktionen
+## Architektur
 
-- **Benutzerauthentifizierung:** Sichere Registrierung und Anmeldung mit JWT und bcrypt-Password-Hashing.
-- **Öffentliche Link-Verkürzung:** Anonyme Benutzer erstellen Kurzlinks mit zufälligem Slug und 30-Tage-Ablaufzeit.
-- **Authentifiziertes Dashboard:** Vollständige Verlaufsübersicht aller erstellten Links.
-- **Benutzerdefinierte Slugs & Ablaufdaten:** Nutzer legen eigene Slugs und Gültigkeitsdauern fest.
-- **CRUD-Operationen:** Vollständiges Erstellen, Lesen, Aktualisieren und Löschen persönlicher Links.
-- **Klick-Tracking:** Zählt und zeigt Klickstatistiken je Kurzlink an.
+```
+Next.js + React Frontend (Tailwind CSS · Cypress E2E)
+         │  REST / JSON + Bearer-JWT
+         ▼
+Node.js / Express.js API (Jest + Supertest · bcrypt · JWT)
+         │  Mongoose ODM
+         ▼
+MongoDB (Short-URL-Dokumente, Klick-Zähler, TTL-Index expiresAt)
+```
 
-### Technische Highlights
+## Tech-Stack
 
-Das Backend ist eine RESTful API mit Node.js und Express.js in serviceorientierter Architektur. Mongoose verwaltet MongoDB-Datenmodelle; ein MongoDB-TTL-Index auf `expiresAt` löscht abgelaufene Links automatisch. Das Frontend verwendet Next.js mit Tailwind CSS und Cypress für End-to-End-Tests. Eine GitLab-CI-Pipeline führt Backend- (Jest/Supertest) und Frontend-Tests bei jedem Push aus. Der gesamte Stack wird mit Docker Compose orchestriert.
+React · Next.js · Tailwind CSS · Node.js · Express.js · MongoDB · JWT · Docker · Cypress · GitLab CI/CD
 
-### Ergebnis
+## Einrichtung
 
-Ein eigenständiges Projekt, das moderne Full-Stack- und DevOps-Praktiken demonstriert: sicheres REST-API-Design, containerisierte Multi-Service-Orchestrierung und automatisierte CI/CD. Die wichtigste Erkenntnis war die Implementierung der vollständigen Pipeline vom Code-Commit bis zum verifizierten Build mit Docker und GitLab CI.
+```bash
+docker compose up --build   # Startet MongoDB, Express-API und Next.js-Frontend
+```
