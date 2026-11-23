@@ -1,5 +1,5 @@
 <!-- portfolio:date=2022-06-01 -->
-# Link24 — Full-Stack URL-Shortener
+# Link24 — Full-Stack URL Shortener
 
 **[English](README.md) · [Deutsch](README.de.md)**
 
